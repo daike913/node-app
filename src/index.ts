@@ -47,10 +47,10 @@ class HitAndBlow {
   }
 
   private validate(inputArr: string[]): string {
-    const isLengthVaild: boolean = inputArr.length === this.answer.length
+    const isLengthValid: boolean = inputArr.length === this.answer.length
     const isAllAnswerSourceOption = inputArr.every((val) => this.answerSource.includes(val))
     const isAllDifferentValues = inputArr.every((val, i) => inputArr.indexOf(val) === i)
-    if (!isLengthVaild) {
+    if (!isLengthValid) {
       return '入力する数字の数を確認してください'
     } else if (!isAllAnswerSourceOption) {
       return '0~9の半角数字を入力してください'
