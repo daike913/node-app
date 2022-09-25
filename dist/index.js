@@ -35,6 +35,48 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var GameProcedure = /** @class */ (function () {
+    function GameProcedure() {
+        this.currentGameTitle = 'hit and blow';
+        this.currentGame = new HitAndBlow();
+    }
+    GameProcedure.prototype.start = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.play()];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    GameProcedure.prototype.play = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        printLine("===\n" + this.currentGameTitle + " \u3092\u958B\u59CB\u3057\u307E\u3059\u3002\n===");
+                        return [4 /*yield*/, this.currentGame.setting()];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, this.currentGame.play()];
+                    case 2:
+                        _a.sent();
+                        this.currentGame.end();
+                        this.end();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    GameProcedure.prototype.end = function () {
+        printLine('ゲームを終了しました。');
+        process.exit();
+    };
+    return GameProcedure;
+}());
 var printLine = function (text, breakLine) {
     if (breakLine === void 0) { breakLine = true; }
     process.stdout.write(text + (breakLine ? '\n' : ''));
@@ -195,25 +237,13 @@ var HitAndBlow = /** @class */ (function () {
     };
     HitAndBlow.prototype.end = function () {
         printLine("\u6B63\u89E3\u3067\u3059\uFF01\n\u8A66\u884C\u56DE\u6570: " + this.tryCount + "\u56DE");
-        process.exit();
     };
     return HitAndBlow;
 }());
 ;
 (function () { return __awaiter(void 0, void 0, void 0, function () {
-    var hitAndBlow;
     return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                hitAndBlow = new HitAndBlow();
-                return [4 /*yield*/, hitAndBlow.setting()];
-            case 1:
-                _a.sent();
-                return [4 /*yield*/, hitAndBlow.play()];
-            case 2:
-                _a.sent();
-                hitAndBlow.end();
-                return [2 /*return*/];
-        }
+        new GameProcedure().start();
+        return [2 /*return*/];
     });
 }); })();
