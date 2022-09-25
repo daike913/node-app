@@ -97,7 +97,7 @@ var HitAndBlow = /** @class */ (function () {
                         _a = this;
                         return [4 /*yield*/, promptSelect('モードを入力してください。', ['normal', 'hard'])];
                     case 1:
-                        _a.mode = (_b.sent());
+                        _a.mode = _b.sent();
                         answerLength = this.getAnswerLength();
                         while (this.answer.length < answerLength) {
                             randNum = Math.floor(Math.random() * this.answerSource.length);
