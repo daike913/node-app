@@ -37,7 +37,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 var nextActions = ['play again', 'exit'];
 var GameProcedure = /** @class */ (function () {
-    function GameProcedure() {
+    function GameProcedure(gameStore) {
+        this.gameStore = gameStore;
         this.currentGameTitle = 'hit and blow';
         this.currentGame = new HitAndBlow();
     }
@@ -373,11 +374,10 @@ var Janken = /** @class */ (function () {
 ;
 (function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, new GameProcedure().start()];
-            case 1:
-                _a.sent();
-                return [2 /*return*/];
-        }
+        new GameProcedure({
+            'hit and blow': new HitAndBlow(),
+            'janken': new Janken()
+        }).start();
+        return [2 /*return*/];
     });
 }); })();
