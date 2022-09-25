@@ -173,6 +173,11 @@ var promptInput = function (text) { return __awaiter(void 0, void 0, void 0, fun
         return [2 /*return*/, readLine()];
     });
 }); };
+var Game = /** @class */ (function () {
+    function Game() {
+    }
+    return Game;
+}());
 var modes = ['normal', 'hard'];
 var HitAndBlow = /** @class */ (function () {
     function HitAndBlow() {
