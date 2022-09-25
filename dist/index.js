@@ -53,11 +53,11 @@ var promptInput = function (text) { return __awaiter(void 0, void 0, void 0, fun
     });
 }); };
 var HitAndBlow = /** @class */ (function () {
-    function HitAndBlow(mode) {
+    function HitAndBlow() {
         this.answerSource = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
         this.answer = [];
         this.tryCount = 0;
-        this.mode = mode;
+        this.mode = 'normal';
     }
     HitAndBlow.prototype.setting = function () {
         var answerLength = this.getAnswerLength();
@@ -162,7 +162,7 @@ var HitAndBlow = /** @class */ (function () {
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                hitAndBlow = new HitAndBlow('normal');
+                hitAndBlow = new HitAndBlow();
                 hitAndBlow.setting();
                 return [4 /*yield*/, hitAndBlow.play()];
             case 1:
