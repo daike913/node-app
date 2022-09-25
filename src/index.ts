@@ -1,23 +1,32 @@
 const nextActions = ['play again', 'exit'] as const
 type NextAction = typeof nextActions[number]
 
+const gameTitles = ['hit and blow', 'janken'] as const
+type GameTitle = typeof gameTitles[number]
 type GameStore = {
   'hit and blow': HitAndBlow
   'janken': Janken
 }
 
 class GameProcedure {
-  private currentGameTitle = 'hit and blow'
-  private currentGame = new HitAndBlow()
+  private currentGameTitle: GameTitle | '' = ''
+  private currentGame: HitAndBlow | Janken | null = null
 
   constructor(private readonly gameStore: GameStore) {
   }
 
   public async start() {
+    await this.select()
     await this.play()
   }
 
+  private async select() {
+    this.currentGameTitle = await promptSelect<GameTitle>('ゲームのタイトルを入力してください。', gameTitles)
+    this.currentGame = this.gameStore[this.currentGameTitle]
+  }
+
   private async play() {
+    if (!this.currentGame) throw new Error('ゲームが選択されていません')
     printLine(`===\n${this.currentGameTitle} を開始します。\n===`)
     await this.currentGame.setting()
     await this.currentGame.play()
