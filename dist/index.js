@@ -60,14 +60,27 @@ var HitAndBlow = /** @class */ (function () {
         this.mode = 'normal';
     }
     HitAndBlow.prototype.setting = function () {
-        var answerLength = this.getAnswerLength();
-        while (this.answer.length < answerLength) {
-            var randNum = Math.floor(Math.random() * this.answerSource.length);
-            var selectedItem = this.answerSource[randNum];
-            if (!this.answer.includes(selectedItem)) {
-                this.answer.push(selectedItem);
-            }
-        }
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, answerLength, randNum, selectedItem;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = this;
+                        return [4 /*yield*/, promptInput('モードを入力してください。')];
+                    case 1:
+                        _a.mode = (_b.sent());
+                        answerLength = this.getAnswerLength();
+                        while (this.answer.length < answerLength) {
+                            randNum = Math.floor(Math.random() * this.answerSource.length);
+                            selectedItem = this.answerSource[randNum];
+                            if (!this.answer.includes(selectedItem)) {
+                                this.answer.push(selectedItem);
+                            }
+                        }
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
     HitAndBlow.prototype.play = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -163,9 +176,11 @@ var HitAndBlow = /** @class */ (function () {
         switch (_a.label) {
             case 0:
                 hitAndBlow = new HitAndBlow();
-                hitAndBlow.setting();
-                return [4 /*yield*/, hitAndBlow.play()];
+                return [4 /*yield*/, hitAndBlow.setting()];
             case 1:
+                _a.sent();
+                return [4 /*yield*/, hitAndBlow.play()];
+            case 2:
                 _a.sent();
                 hitAndBlow.end();
                 return [2 /*return*/];

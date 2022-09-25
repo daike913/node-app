@@ -16,7 +16,8 @@ class HitAndBlow {
   private tryCount = 0
   private mode: Mode = 'normal'
 
-  setting() {
+  async setting() {
+    this.mode = await promptInput('モードを入力してください。') as Mode
     const answerLength = this.getAnswerLength();
 
     while(this.answer.length < answerLength) {
@@ -103,7 +104,7 @@ class HitAndBlow {
 
 ;(async () => {
   const hitAndBlow = new HitAndBlow()
-  hitAndBlow.setting()
+  await hitAndBlow.setting()
   await hitAndBlow.play()
   hitAndBlow.end()
 })()
